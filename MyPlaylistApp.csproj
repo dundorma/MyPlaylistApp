@@ -14,6 +14,21 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -124,6 +139,11 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MyPlaylistAppDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyPlaylistAppDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Pages\AddDataWin.xaml.cs">
       <DependentUpon>AddDataWin.xaml</DependentUpon>
     </Compile>
@@ -155,6 +175,17 @@
     <None Include="EntityModel\EntityMusicModel.edmx.diagram">
       <DependentUpon>EntityMusicModel.edmx</DependentUpon>
     </None>
+    <None Include="MyPlaylistAppDataSet.xsc">
+      <DependentUpon>MyPlaylistAppDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="MyPlaylistAppDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MyPlaylistAppDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="MyPlaylistAppDataSet.xss">
+      <DependentUpon>MyPlaylistAppDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -178,17 +209,37 @@
   <ItemGroup>
     <Content Include="EntityModel\EntityMusicModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>EntityMusicModel.Context.cs</LastGenOutput>
       <DependentUpon>EntityMusicModel.edmx</DependentUpon>
+      <LastGenOutput>EntityMusicModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="EntityModel\EntityMusicModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>EntityMusicModel.edmx</DependentUpon>
       <LastGenOutput>EntityMusicModel.cs</LastGenOutput>
     </Content>
+    <Content Include="MyPlaylistApp.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MyPlaylistApp_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>MyPlaylistApp.mdf</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
